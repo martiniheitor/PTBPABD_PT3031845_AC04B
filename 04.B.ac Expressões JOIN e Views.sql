@@ -1,7 +1,7 @@
--- Questão 1. Gere uma lista de todos os instrutores, 
-mostrando sua ID, nome e número de seções que eles ministraram. 
-Não se esqueça de mostrar o número de seções como 0 para os instrutores que não ministraram qualquer seção. 
-Sua consulta deverá utilizar outer join e não deverá utilizar subconsultas escalares. --
+-- Questão 1. Gere uma lista de todos os instrutores,
+-- mostrando sua ID, nome e número de seções que eles ministraram.
+-- Não se esqueça de mostrar o número de seções como 0 para os instrutores que não ministraram qualquer seção.
+-- Sua consulta deverá utilizar outer join e não deverá utilizar subconsultas escalares.
 
 SELECT 
     instr.ID, 
@@ -12,7 +12,7 @@ LEFT JOIN teaches AS sec ON sec.ID = instr.ID
 GROUP BY instr.ID, instr.name;
 
 -- Questão 2. Escreva a mesma consulta do item anterior, 
-mas usando uma subconsulta escalar, sem outer join. --
+-- mas usando uma subconsulta escalar, sem outer join.
 
 SELECT 
     inst.ID, 
@@ -25,9 +25,9 @@ SELECT
 FROM instructor inst;
 
 -- Questão 3. Gere a lista de todas as seções de curso oferecidas na primavera de 2010, 
-junto com o nome dos instrutores ministrando a seção. Se uma seção tiver mais de 1 instrutor, 
-ela deverá aparecer uma vez no resultado para cada instrutor. Se não tiver instrutor algum, 
-ela ainda deverá aparecer no resultado, com o nome do instrutor definido como “-”. --
+-- junto com o nome dos instrutores ministrando a seção. Se uma seção tiver mais de 1 instrutor, 
+-- ela deverá aparecer uma vez no resultado para cada instrutor. Se não tiver instrutor algum, 
+-- ela ainda deverá aparecer no resultado, com o nome do instrutor definido como “-”.
 
 SELECT 
     sec.course_id,
@@ -46,16 +46,16 @@ LEFT JOIN instructor instr ON instr.ID = ens.ID
 WHERE sec.semester = 'Spring' AND sec.year = 2010;
 
 -- Questão 4. Suponha que você tenha recebido uma relação grade_points (grade, points), 
-que oferece uma conversão de conceitos (letras) na relação takes para notas numéricas; 
-por exemplo, uma nota “A+” poderia ser especificada para corresponder a 4 pontos, um “A” para 3,7 pontos, e “A-” para 3,4, 
-e “B+” para 3,1 pontos, e assim por diante. 
+-- que oferece uma conversão de conceitos (letras) na relação takes para notas numéricas; 
+-- por exemplo, uma nota “A+” poderia ser especificada para corresponder a 4 pontos, um “A” para 3,7 pontos, e “A-” para 3,4, 
+-- e “B+” para 3,1 pontos, e assim por diante. 
 
-Os Pontos totais obtidos por um aluno para uma oferta de curso (section) 
-são definidos como o número de créditos para o curso multiplicado pelos pontos numéricos para a nota que o aluno recebeu.
+-- Os Pontos totais obtidos por um aluno para uma oferta de curso (section) 
+-- são definidos como o número de créditos para o curso multiplicado pelos pontos numéricos para a nota que o aluno recebeu.
 
-Dada essa relação e o nosso esquema university, escreva: 
+-- Dada essa relação e o nosso esquema university, escreva: 
 
-Ache os pontos totais recebidos por aluno, para todos os cursos realizados por ele. --
+-- Ache os pontos totais recebidos por aluno, para todos os cursos realizados por ele.
 
 SELECT 
     stu.ID,
@@ -96,7 +96,7 @@ FROM student stu
 JOIN takes tk ON stu.ID = tk.ID
 JOIN course crs ON tk.course_id = crs.course_id;
 
--- Questão 5. Crie uma view a partir do resultado da Questão 4 com o nome “coeficiente_rendimento”. --
+-- Questão 5. Crie uma view a partir do resultado da Questão 4 com o nome “coeficiente_rendimento”.
 
 DROP VIEW IF EXISTS coeficiente_rendimento;
 
